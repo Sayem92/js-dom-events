@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buble event</title>
+    <style>
+        body{
+            border: 5px solid red;
+        }
+        section{
+            border: 5px solid blue;
+        }
+        ul{
+            border: 5px solid green;
+        }
+        #item-2{
+            border: 5px solid tomato;
+        }
+    </style>
+</head>
+<body id="body">
+    <h1>Exploring Event Bubble</h1>
+    <section id="list-container">
+        <ul id="list-ul">
+            <li id="item-1">Lorem, ipsum.</li>
+            <li id="item-2">Rerum, saepe?</li>
+            <li id="item-3">Optio, cum?</li>
+            <li id="item-4">Deleniti, eveniet.</li>
+            <li id="item-5">Hic, esse!</li>
+            <li id="item-6">Tempora, voluptate?</li>
+        </ul>
+    </section>
+    <script>
+        document.getElementById('item-2').addEventListener('click',function(event){
+            console.log('item-2 click');
+            // sudu oi box ar potom comment ta show korbe.---------------------
+            event.stopImmediatePropagation();
+            //sudu oi box ar sob comment show korbe-------------------------
+            // event.stopPropagation();
+        });
+        document.getElementById('item-2').addEventListener('click',function(event){
+            console.log('item-2 second click');
+        });
+        document.getElementById('item-2').addEventListener('click',function(event){
+            console.log('item-2 third click');
+        });
+        document.getElementById('item-2').addEventListener('click',function(event){
+            console.log('item-2 four click');
+        });
+        document.getElementById('list-ul').addEventListener('click',function(){
+            console.log('list ul click')
+        });
+        document.getElementById('list-container').addEventListener('click',function(){
+            console.log('section container click')
+        });
+        document.getElementById('body').addEventListener('click',function(){
+            console.log('body of the html click')
+        });
+    </script>
+</body>
+</html>
